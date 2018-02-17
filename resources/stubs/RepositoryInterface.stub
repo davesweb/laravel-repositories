@@ -1,0 +1,113 @@
+<?php
+
+namespace {namespace};
+
+use Davesweb\Repositories\Criteria\Criteria;
+use Davesweb\Repositories\Repository;
+use Exception;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Throwable;
+use {entity_interface} as EntityContract;
+
+interface {name} extends Repository
+{
+    /**
+     * @param int $id
+     *
+     * @return EntityContract|null
+     */
+    public function find(int $id);
+
+    /**
+     * @param int $id
+     *
+     * @throws ModelNotFoundException
+     *
+     * @return EntityContract
+     */
+    public function findOrFail(int $id);
+
+    /**
+     * @param string $column
+     * @param mixed $value
+     *
+     * @return EntityContract|null
+     */
+    public function findBy(string $column, $value);
+
+    /**
+     * @param string $column
+     * @param mixed $value
+     *
+     * @throws ModelNotFoundException
+     *
+     * @return EntityContract
+     */
+    public function findOrFailBy(string $column, $value);
+
+    /**
+     * @return EntityContract|null
+     */
+    public function first();
+
+    /**
+     * @throws ModelNotFoundException
+     *
+     * @return EntityContract
+     */
+    public function firstOrFail();
+
+    /**
+     * @return EntityContract[]
+     */
+    public function all(): array;
+
+    /**
+     * @param int $perPage
+     * @param int $page
+     * @param string $pageName
+     *
+     * @return Paginator
+     */
+    public function paginate(int $perPage, int $page, string $pageName = 'page'): Paginator;
+
+    /**
+     * @param EntityContract $model
+     *
+     * @throws Throwable|Exception
+     *
+     * @return bool
+     */
+    public function save($model): bool;
+
+    /**
+     * @param EntityContract $model
+     *
+     * @throws Throwable|Exception
+     *
+     * @return bool
+     */
+    public function update($model): bool;
+
+    /**
+     * @param EntityContract $model
+     *
+     * @throws Throwable|Exception
+     *
+     * @return bool
+     */
+    public function delete($model): bool;
+
+    /**
+     * @param Criteria $criteria
+     *
+     * @return Repository
+     */
+    public function pushCriteria(Criteria $criteria): Repository;
+
+    /**
+     * @return Repository
+     */
+    public function clearCriteria(): Repository;
+}

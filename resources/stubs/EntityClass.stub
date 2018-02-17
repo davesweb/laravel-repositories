@@ -1,0 +1,19 @@
+<?php
+
+namespace {namespace};
+
+use {interface} as {name}Contract;
+use Davesweb\Repositories\Traits\Identifiable;
+use Illuminate\Database\Eloquent\Model;
+
+class {name} extends Model implements {name}Contract
+{
+    use Identifiable;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $casts = [
+        'id' => 'integer'
+    ];
+}

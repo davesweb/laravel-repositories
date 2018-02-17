@@ -1,0 +1,15 @@
+<?php
+
+namespace {namespace};
+
+use {interface} as RepositoryContract;
+use {concrete} as RepositoryBase;
+use {entity} as Entity;
+
+class {name} extends RepositoryBase implements RepositoryContract
+{
+    public function __construct()
+    {
+        parent::__construct(new Entity());
+    }
+}
