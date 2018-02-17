@@ -1,1 +1,4 @@
-.idea/
+vendor/
+.idea
+.cache
+.php_cs.cache
