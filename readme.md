@@ -36,7 +36,7 @@ composer update davesweb/repositories
 Once the package is installed in your project, all that is left is to  
 publish the config file and other resources. Simply run
 ```
-php artisan vendor:publish --provider=RepositoryServiceProvider
+php artisan vendor:publish
 ```
 
 ### Usage

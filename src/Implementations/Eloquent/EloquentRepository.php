@@ -110,6 +110,27 @@ abstract class EloquentRepository implements Repository
     }
 
     /**
+     * @param array $ids
+     *
+     * @throws ModelNotFoundException
+     *
+     * @return array
+     */
+    public function findAllOrFail(array $ids): array
+    {
+        $query = $this->applyCriteria($this->model->newQuery());
+
+        $models = $query->findMany($ids);
+
+        if (count($models) !== count($ids)) {
+            throw (new ModelNotFoundException())
+                ->setModel(get_class($this->model), $ids);
+        }
+
+        return iterator_to_array($models);
+    }
+
+    /**
      * @param int      $perPage
      * @param int|null $page
      * @param string   $pageName

@@ -64,6 +64,15 @@ interface {name} extends Repository
     public function all(): array;
 
     /**
+     * @param array|int[] $ids
+     *
+     * @throws ModelNotFoundException
+     *
+     * @return EntityContract[]
+     */
+    public function findAllOrFail(array $ids): array;
+
+    /**
      * @param int $perPage
      * @param int $page
      * @param string $pageName
