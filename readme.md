@@ -1,3 +1,8 @@
+[![License](https://poser.pugx.org/davesweb/repositories/license)](https://packagist.org/packages/davesweb/repositories)
+[![Latest Stable Version](https://poser.pugx.org/davesweb/repositories/v/stable)](https://packagist.org/packages/davesweb/repositories)
+[![Latest Unstable Version](https://poser.pugx.org/davesweb/repositories/v/unstable)](https://packagist.org/packages/davesweb/repositories)
+[![composer.lock](https://poser.pugx.org/davesweb/repositories/composerlock)](https://packagist.org/packages/davesweb/repositories)
+
 # Davesweb Repositories
 
 This package aims to provide a simple and elegant implementation for 
