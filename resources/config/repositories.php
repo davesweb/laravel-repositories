@@ -82,13 +82,6 @@ return [
         'repository_suffix' => 'Repository',
 
         /*
-         * The path that the filesystem needs to use as root.
-         */
-        'filesystem' => [
-            'root' => app()->resourcePath(),
-        ],
-
-        /*
          * The list of available implementations.
          *
          * This should be an array of 'name' => 'full\namespace\to\abstract\base\class'.

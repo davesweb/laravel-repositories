@@ -33,6 +33,9 @@ Or add the following line to your composer.json file in the require block and ru
 composer update davesweb/repositories
 ```
 
+If you use Laravel's auto-discover feature, the service provider is registered automatically. If not, add the following 
+service provider to your app: `Davesweb\Repositories\RepositoryServiceProvider::class`.
+
 Once the package is installed in your project, all that is left is to  
 publish the config file and other resources. Simply run
 ```
@@ -127,9 +130,6 @@ php artisan davesweb:make:repository {name}
 Where name is the name of the repository you want to create, in this case Set.
 
 The command has the following options:
-|Option|Default value|Description|
-|=|=|
-|
 
 |Option:|Default value:|Description:|
 |---|---|---|
@@ -150,6 +150,47 @@ to your RepositoryInterface in the AppServiceProvider.
 
 ### Configuration
 
-Configuration options only apply to the Artisan command for generating code.
+Configuration options only apply to the Artisan command for generating code. All options are defined as 
+
+```php
+return [
+    'generator' => [
+        'option' => 'value',
+    ]
+];
+```
+
+For most config values, the following parameters are available:
+
+|Parameter|Value|
+|---|---|
+|{namespace}|Gets replaced by the --namespace option in the command call|
+|{name}|Get replaced by the name provided in the command call|
+
+For all parameters, slashes and backslashes are set to directory separators where needed, so the command works on both 
+Windows and *nix machines.
+
+|Option:|Description:|
+|---|---|
+|entity_interface_path|The location where the entity interfaces are saved.|
+|entity_path|The location where the entities are saved.|
+|interface_path|The location where the repository interfaces are saved.|
+|repository_path|The location where the repository classes are saved.|
+|migration_path|The location where the migrations are saved|
+|entity_interface_namespace|The namespace used for entity interfaces|
+|entity_namespace|The namespace used for entities|
+|interface_namespace|The namespace used for repository interfaces|
+|repository_namespace|The namespace used for repositories|
+|entity_interface_prefix|Prefix for entity interface names|
+|entity_interface_suffix|Suffix for entity interface names|
+|entity_prefix|Prefix for entity names|
+|entity_suffix|Suffix for entity names|
+|interface_prefix|Prefix for repository interface names|
+|interface_suffix|Suffix for repository interface names|
+|repository_prefix|Prefix for repository names|
+|repository_suffix|Suffix for repository names|
+|available_implementations|An array where the key is the name if the implementation and the value is the full class name of the base class. See the default Eloquent for example|
+|stubs|An array with the location of the stub files. The key is the name of the stub, the value the location. The following stub files are needed: 'entity', 'entity_interface', 'interface' and 'repository'|
+
 
 ### FAQ
