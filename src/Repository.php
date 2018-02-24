@@ -63,6 +63,15 @@ interface Repository
     public function all(): array;
 
     /**
+     * @param array|int[] $ids
+     *
+     * @throws ModelNotFoundException
+     *
+     * @return Model[]
+     */
+    public function findAllOrFail(array $ids): array;
+
+    /**
      * @param int      $perPage
      * @param int|null $page
      * @param string   $pageName
